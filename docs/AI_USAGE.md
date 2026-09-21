@@ -6,7 +6,7 @@ Built with Claude (Anthropic), via Claude Code, on 2026-09-21 for the OSF x Ande
 
 - **The idea, the target users (male and female survivors), and the core design decisions** (counsellor-first routing before police, no registration, browser-side voice masking, country-pack architecture) came from the author, before involving AI.
 - **Naming**: the author proposed candidate names; Claude checked them against existing products via web search (surfacing that some candidates were already in use) and the author chose "Ekyama" (Luganda) from the remaining options.
-- **Landscape check**: at the author's request, Claude reviewed an existing public GBV reporting project (Kenya-focused, USSD/SMS/voice) to identify genuine differentiation before building, rather than duplicating it.
+- **Landscape check**: at the author's request, Claude reviewed the existing GBV-reporting landscape in the region to identify genuine differentiation before building, rather than duplicating what already exists.
 - **Code, data compilation, and documentation** (this file included) were written by Claude, directed and reviewed by the author at each stage.
 
 ## Process, roughly in order

@@ -48,15 +48,31 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-neutral-200 pt-4 text-sm text-neutral-500">
-          <div className="flex flex-wrap gap-4">
-            <Link href="/lite" className="underline hover:text-neutral-700">
-              {t("cta_lite")}
-            </Link>
-            <Link href="/ussd-demo" className="underline hover:text-neutral-700">
-              Try it as a feature phone (USSD demo)
-            </Link>
+        <Link
+          href="/ussd-demo"
+          className="flex items-center justify-between rounded-xl border-2 border-dashed border-violet-300 bg-violet-50/60 p-5 transition hover:border-violet-500 hover:bg-violet-100"
+        >
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="rounded-full bg-violet-700 px-2 py-0.5 text-xs font-bold text-white">
+                DEMO
+              </span>
+              <span className="text-xl font-semibold text-violet-900">
+                Try it as a feature phone (USSD)
+              </span>
+            </div>
+            <p className="mt-1 text-sm text-neutral-600">
+              No smartphone or data needed — see the same report flow work over a simulated USSD
+              keypad session.
+            </p>
           </div>
+          <span className="text-2xl text-violet-500">→</span>
+        </Link>
+
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-neutral-200 pt-4 text-sm text-neutral-500">
+          <Link href="/lite" className="underline hover:text-neutral-700">
+            {t("cta_lite")}
+          </Link>
           <Link href="/counsellor" className="underline hover:text-neutral-700">
             Counsellor sign-in
           </Link>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLang } from "@/lib/LangContext";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import CountrySwitcher from "@/components/CountrySwitcher";
 
 export default function Header() {
   const { t } = useLang();
@@ -13,6 +14,7 @@ export default function Header() {
           {t("appName")}
         </Link>
         <div className="flex items-center gap-3">
+          <CountrySwitcher />
           <LanguageSwitcher />
         </div>
       </div>

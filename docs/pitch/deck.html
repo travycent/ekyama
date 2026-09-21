@@ -210,10 +210,29 @@
     <tr><th>Feature</th><th>Typical GBV reporting tools</th><th>Ekyama</th></tr>
     <tr><td>Who it's for</td><td class="no">Framed around women and children</td><td class="yes">Men and women, explicitly</td></tr>
     <tr><td>First contact</td><td class="no">Often routes straight to police/institution</td><td class="yes">Human counsellor first, always</td></tr>
-    <tr><td>Legal framing</td><td class="no">Generic</td><td class="yes">Addresses Uganda's specific legal risk for male survivors</td></tr>
+    <tr><td>Legal framing</td><td class="no">Generic</td><td class="yes">Country-specific — even catches Kenya vs. Uganda differing on who the rape law protects</td></tr>
     <tr><td>Trust</td><td class="no">Static info, no provenance</td><td class="yes">Sourced + dated on every entry</td></tr>
-    <tr><td>Scale</td><td class="no">Hard-coded to one country</td><td class="yes">Config-driven country packs</td></tr>
+    <tr><td>Scale</td><td class="no">Hard-coded to one country</td><td class="yes">Two country packs shipped, switchable live</td></tr>
   </table>
+  <div class="footer-brand">EKYAMA</div>
+</section>
+
+<!-- 7.5: Scalability & reach, proven not promised -->
+<section class="slide">
+  <div class="accent"></div>
+  <div class="kicker">Scalability &amp; Reach — proven, not just promised</div>
+  <h2>Two things most hackathon entries only put on a roadmap slide</h2>
+  <div class="cols">
+    <div class="col card">
+      <h3>Two countries, live today</h3>
+      <p>Switch the header dropdown from Uganda to Kenya and the help directory, legal notes and even the available languages update everywhere at once — all from one JSON data file, no code change. It surfaced a real finding: Kenya's rape law is gender-neutral, Uganda's is not. The app now says so, instead of assuming one legal picture fits every country it expands to.</p>
+    </div>
+    <div class="col card">
+      <h3>Works on a feature phone, demonstrably</h3>
+      <p>Roughly 1 in 3 phones in the region is still a feature phone. <code>/ussd-demo</code> is a keypad-and-screen simulator that calls the exact same report and case-lookup APIs as the web app — not a mockup. A report submitted through 2 keypad presses shows up in the counsellor console exactly like a web submission. What's left for production is a telco gateway contract, not a rebuild.</p>
+    </div>
+  </div>
+  <p class="lead" style="margin-top: 20px; font-size: 20px;">Plus: the app installs to a home screen and keeps working offline for the pages survivors need most — verified by a real service worker, not a manifest alone.</p>
   <div class="footer-brand">EKYAMA</div>
 </section>
 
@@ -222,11 +241,11 @@
   <div class="accent"></div>
   <div class="kicker">Impact &amp; What's Next</div>
   <h2>A low-friction first step for the least-served survivors</h2>
-  <p class="lead">Piloted with an organisation like MOHRAU or the Uganda Police Child &amp; Family Protection Unit as the receiving counsellor team, Ekyama gives male survivors — one of the least-served groups in Uganda's GBV response — a safe first point of contact, and gives every survivor visibility into what happens after they report.</p>
+  <p class="lead">Piloted with an organisation like MOHRAU or the Uganda Police Child &amp; Family Protection Unit as the receiving counsellor team, Ekyama gives male survivors — one of the least-served groups in the region's GBV response — a safe first point of contact, and gives every survivor visibility into what happens after they report.</p>
   <div class="cols" style="margin-top: 28px;">
-    <div class="col card"><h3>Next: SMS/USSD channel</h3><p>To reach feature phones, closing the biggest gap versus offline-first tools.</p></div>
-    <div class="col card"><h3>Next: native-speaker review</h3><p>Of Luganda strings, plus more local languages.</p></div>
-    <div class="col card"><h3>Next: second country pack</h3><p>Proving the scalability architecture beyond Uganda.</p></div>
+    <div class="col card"><h3>Next: a real telco gateway</h3><p>Wire <code>/ussd-demo</code>'s proven flow to a live USSD short code via a provider like Africa's Talking.</p></div>
+    <div class="col card"><h3>Next: native-speaker review</h3><p>Of Luganda strings, plus more local languages and a third country pack.</p></div>
+    <div class="col card"><h3>Next: per-counsellor accounts</h3><p>Replacing the shared demo token with real accounts and audit logging.</p></div>
   </div>
   <div class="footer-brand">EKYAMA</div>
 </section>

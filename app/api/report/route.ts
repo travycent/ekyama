@@ -3,6 +3,7 @@ import { db, uploadsDir } from "@/lib/db";
 import { generateCaseCode, generatePin, hashPin } from "@/lib/case";
 import { scrubText } from "@/lib/scrub";
 import { rulesTriage, enhanceTriage } from "@/lib/triage";
+import { listCountryCodes } from "@/lib/countryPack";
 import fs from "fs";
 import path from "path";
 
@@ -14,6 +15,7 @@ export async function POST(request: NextRequest) {
   let reporterRole = "me";
   let district = "";
   let language = "en";
+  let country = "UG";
   let audioBuffer: Buffer | null = null;
   let audioExt = "webm";
 
@@ -23,6 +25,7 @@ export async function POST(request: NextRequest) {
     reporterRole = String(form.get("reporterRole") || "me");
     district = String(form.get("district") || "");
     language = String(form.get("language") || "en");
+    country = String(form.get("country") || "UG");
     const audio = form.get("audio");
     if (audio && audio instanceof File && audio.size > 0) {
       const arrayBuffer = await audio.arrayBuffer();
@@ -35,7 +38,10 @@ export async function POST(request: NextRequest) {
     reporterRole = String(body.reporterRole || "me");
     district = String(body.district || "");
     language = String(body.language || "en");
+    country = String(body.country || "UG");
   }
+
+  if (!listCountryCodes().includes(country)) country = "UG";
 
   if (!narrative.trim() && !audioBuffer) {
     return NextResponse.json({ error: "Report cannot be empty" }, { status: 400 });
@@ -63,10 +69,11 @@ export async function POST(request: NextRequest) {
   db.prepare(
     `INSERT INTO cases
       (code, pin_hash, country, language, category, urgency, status, reporter_role, narrative, district, has_audio, audio_path, triage_json, created_at, updated_at)
-     VALUES (?, ?, 'UG', ?, NULL, ?, 'received', ?, ?, ?, ?, ?, ?, ?, ?)`
+     VALUES (?, ?, ?, ?, NULL, ?, 'received', ?, ?, ?, ?, ?, ?, ?, ?)`
   ).run(
     code,
     pinHash,
+    country,
     language,
     triage.urgency,
     reporterRole,

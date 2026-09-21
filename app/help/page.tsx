@@ -2,6 +2,7 @@
 
 import Header from "@/components/Header";
 import { useLang } from "@/lib/LangContext";
+import { useCountry } from "@/lib/CountryContext";
 import { getCountryPack } from "@/lib/countryPack";
 
 function SourceBadge({
@@ -42,7 +43,8 @@ function SourceBadge({
 
 export default function HelpPage() {
   const { t, lang } = useLang();
-  const pack = getCountryPack("UG");
+  const { country } = useCountry();
+  const pack = getCountryPack(country);
 
   return (
     <div className="flex min-h-screen flex-col">

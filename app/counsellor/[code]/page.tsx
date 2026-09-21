@@ -9,6 +9,7 @@ interface CaseDetail {
   status: string;
   urgency: string;
   narrative: string;
+  country: string;
   district: string | null;
   reporter_role: string;
   has_audio: number;
@@ -88,7 +89,8 @@ export default function CounsellorCaseDetail({ params }: { params: Promise<{ cod
 
         <div className="mb-4 rounded-lg border border-neutral-200 bg-white p-4">
           <p className="mb-1 text-xs uppercase tracking-wide text-neutral-500">
-            Reported for: {caseData.reporter_role} · District: {caseData.district || "not given"}
+            Reported for: {caseData.reporter_role} · Country: {caseData.country} · District:{" "}
+            {caseData.district || "not given"}
           </p>
           <p className="whitespace-pre-wrap text-sm text-neutral-900">
             {caseData.narrative || "(no written text — see audio)"}

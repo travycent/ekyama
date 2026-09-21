@@ -1,4 +1,5 @@
 import ug from "@/data/countries/ug.json";
+import ke from "@/data/countries/ke.json";
 
 export interface CountryPack {
   code: string;
@@ -37,6 +38,7 @@ export interface CountryPack {
 
 const packs: Record<string, CountryPack> = {
   UG: ug as CountryPack,
+  KE: ke as CountryPack,
 };
 
 export function getCountryPack(code: string = "UG"): CountryPack {
@@ -45,4 +47,8 @@ export function getCountryPack(code: string = "UG"): CountryPack {
 
 export function listCountryCodes(): string[] {
   return Object.keys(packs);
+}
+
+export function listCountries(): { code: string; name: string }[] {
+  return Object.values(packs).map((p) => ({ code: p.code, name: p.name }));
 }

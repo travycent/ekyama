@@ -9,6 +9,7 @@ interface CaseRow {
   urgency: string;
   status: string;
   language: string;
+  country: string;
   district: string | null;
   reporter_role: string;
   has_audio: number;
@@ -119,6 +120,9 @@ export default function CounsellorPage() {
                 </span>
                 <span className="font-mono text-sm">{c.code}</span>
                 {c.has_audio ? <span title="Has audio">🎙️</span> : null}
+                <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-xs font-semibold text-neutral-600">
+                  {c.country}
+                </span>
                 {c.district && <span className="text-xs text-neutral-500">{c.district}</span>}
               </div>
               <span className="text-xs uppercase tracking-wide text-neutral-500">{c.status}</span>

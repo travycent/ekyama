@@ -18,12 +18,13 @@ Ekyama's core idea — not AI-generated, per the hackathon's rules — is a repo
 
 ## Solution, in one paragraph
 
-A mobile-first web app (installable to a home screen, so no app store is required) where a survivor reports in text or a browser-masked voice recording, gets a case code and PIN with no registration, and can track status and chat with a counsellor anonymously. A rules-based triage engine — with an optional, always-secondary free-tier AI enhancement — flags urgency for the counsellor. A verified help directory (hotlines, police units, organisations) and a grounded Q&A guide answer only from sourced, dated data, never invented text. The whole system is built as a country data pack, so Uganda ships fully populated today, and adding another country or track is a data file, not a rewrite.
+A mobile-first web app (installable to a home screen, works offline for the pages that matter most) where a survivor reports in text or a browser-masked voice recording, gets a case code and PIN with no registration, and can track status and chat with a counsellor anonymously. A rules-based triage engine — with an optional, always-secondary free-tier AI enhancement — flags urgency for the counsellor. A verified help directory (hotlines, police units, organisations) and a grounded Q&A guide answer only from sourced, dated data, never invented text. The whole system is built as a country data pack — Uganda and Kenya both ship fully populated, switchable from a single dropdown that updates the help directory, legal notes and available languages everywhere at once — so adding another country or track is a data file, not a rewrite. A local USSD/feature-phone simulator (`/ussd-demo`) drives the same report and case-lookup APIs as the web form, proving the backend already works independently of the channel it's reached through.
 
 ## Information sources
 
-Compiled by manual research (not AI-generated) on 2026-09-21 from public sources, cited directly in `data/countries/ug.json`:
+Compiled by manual research (not AI-generated) on 2026-09-21 from public sources, cited directly in `data/countries/ug.json` and `data/countries/ke.json`:
 
+**Uganda:**
 - Uganda Police Force social channels, for the emergency line (112/999) and the GBV/child-protection toll-free line (0800 199 195) and CFPD direct lines.
 - The Uganda Child Helpline (116), via the National Women's Council and UNICEF's published materials.
 - The Penal Code Act (Cap. 120) provisions on rape (s.123), defilement and aggravated defilement (s.129), via the UN Women EVAW Global Database and an ICMEC compendium of Uganda child-protection legislation.
@@ -31,7 +32,14 @@ Compiled by manual research (not AI-generated) on 2026-09-21 from public sources
 - The Human Dignity Trust's Uganda country profile, for the legal-risk note affecting male survivors of same-sex assault.
 - Organisations: Uganda Police CFPU, MGLSD, MIFUMI, FIDA-Uganda, and Men of Hope Refugee Association Uganda (MOHRAU) — one of the few organisations we found that explicitly names male survivors as a served population, via an IDS research publication.
 
-Every entry in the app links back to its source and shows when it was last checked. One organisation (UWONET) is marked as unverified sample data because we could not confirm current direct-service contact details in the time available — we chose to label it rather than drop it or present it as verified.
+**Kenya:**
+- The national 1195 GBV helpline (Healthcare Assistance Kenya, supported by UN Women/UNFPA), via UN Women Africa's published coverage and the helpline's own site.
+- Kenya Police Service's emergency lines (999/112) and Childline Kenya's 116 helpline, via their official sites.
+- The Sexual Offences Act, 2006 (rape, s.3; defilement, s.8), via the Kenya Law Reform Commission's published Act text and a legal-aid simplified handbook. Notably, Kenya's rape provision is **gender-neutral**, unlike Uganda's — a genuine, sourced legal contrast we surface directly in the app rather than assuming both countries work the same way.
+- The Protection Against Domestic Violence Act, 2015, via Kenya Law and the Heinrich Böll Stiftung's published summary.
+- Organisations: Healthcare Assistance Kenya, the Gender Violence Recovery Centre, FIDA Kenya, CREAW and COVAW.
+
+Every entry in the app links back to its source and shows when it was last checked. Two organisations (UWONET in Uganda; FIDA Kenya and CREAW's male-survivor service scope in Kenya) are marked as unverified sample data because we could not confirm current details in the time available — we chose to label them rather than drop them or present them as verified.
 
 ## Approach to trust and accuracy
 
@@ -47,4 +55,8 @@ See `docs/AI_USAGE.md` for the full log. In summary: the product idea, target us
 
 ## Potential impact
 
-If piloted with an organisation like MOHRAU or the Uganda Police CFPU as the receiving counsellor team, Ekyama could give male survivors — currently one of the least-served groups in Uganda's GBV response system — a low-friction, low-risk first point of contact, while giving all survivors clearer visibility into what happens after they report. The country-pack architecture is designed so the same shell could serve other African contexts (different legal notes, different hotlines, different languages) without rebuilding the app.
+If piloted with an organisation like MOHRAU or the Uganda Police CFPU as the receiving counsellor team, Ekyama could give male survivors — currently one of the least-served groups in Uganda's GBV response system — a low-friction, low-risk first point of contact, while giving all survivors clearer visibility into what happens after they report.
+
+The country-pack architecture isn't just a design intention — it's demonstrated in the submitted build: Kenya is fully populated alongside Uganda, with real, sourced data, switchable from a single dropdown that updates the help directory, legal notes and available languages everywhere at once. That same architecture surfaced a genuine, useful finding: Kenya's rape law is written gender-neutrally, while Uganda's is not — a real difference male survivors in each country face, that the app now states explicitly rather than assuming one legal picture fits every country it might expand to.
+
+On reach, the biggest gap for a web-only tool is feature phones, which are still roughly one in three devices in the region. Rather than leave that as an unaddressed roadmap bullet, the submission includes a working local USSD/keypad simulator that drives the exact same report and case-lookup APIs as the web app — the same case store, the same rules-based triage, the same counsellor console handle a report whether it arrived through a browser or a simulated USSD session. What's missing for a real deployment is a paid telco gateway account and approval process, not a rebuild of the backend.

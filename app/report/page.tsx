@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import { useLang } from "@/lib/LangContext";
+import { useCountry } from "@/lib/CountryContext";
 import { scrubText } from "@/lib/scrub";
 import { maskAudioBlob } from "@/lib/voiceMask";
 
@@ -11,6 +12,7 @@ type RecordState = "idle" | "recording" | "recorded" | "masking";
 
 export default function ReportPage() {
   const { t, lang } = useLang();
+  const { country } = useCountry();
   const router = useRouter();
 
   const [narrative, setNarrative] = useState("");
@@ -88,6 +90,7 @@ export default function ReportPage() {
       form.set("reporterRole", reporterRole);
       form.set("district", district);
       form.set("language", lang);
+      form.set("country", country);
       if (maskedBlob) form.set("audio", maskedBlob, "report.wav");
 
       const res = await fetch("/api/report", { method: "POST", body: form });

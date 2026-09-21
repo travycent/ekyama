@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
 
   const rows = db
     .prepare(
-      `SELECT code, urgency, status, language, district, reporter_role, has_audio, created_at, updated_at
+      `SELECT code, urgency, status, language, country, district, reporter_role, has_audio, created_at, updated_at
        FROM cases ORDER BY updated_at DESC`
     )
     .all() as {
@@ -28,6 +28,7 @@ export async function GET(request: NextRequest) {
     urgency: string;
     status: string;
     language: string;
+    country: string;
     district: string | null;
     reporter_role: string;
     has_audio: number;

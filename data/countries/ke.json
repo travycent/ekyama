@@ -1,0 +1,137 @@
+{
+  "code": "KE",
+  "name": "Kenya",
+  "languages": ["en", "sw"],
+  "hotlines": [
+    {
+      "id": "gbv-1195",
+      "name": { "en": "National GBV Helpline", "sw": "Simu ya Kitaifa ya Ukatili wa Kijinsia" },
+      "number": "1195",
+      "operator": "Healthcare Assistance Kenya (HAK), supported by UN Women / UNFPA",
+      "notes": "Toll-free, 24/7 national gender-based violence helpline.",
+      "verified": true,
+      "sourceUrl": "https://africa.unwomen.org/en/stories/news/2024/10/kenyas-national-toll-free-helpline-1195-a-lifeline-for-gender-based-violence-survivors",
+      "lastVerified": "2026-09-21"
+    },
+    {
+      "id": "police-emergency-ke",
+      "name": { "en": "Police Emergency Line", "sw": "Simu ya Dharura ya Polisi" },
+      "number": "999 / 112",
+      "operator": "Kenya Police Service",
+      "notes": "112 is the newer digital-friendly alternative to 999; both are active. (911 is not a Kenyan emergency number.)",
+      "verified": true,
+      "sourceUrl": "https://www.kenyapolice.go.ke/contact-us.html",
+      "lastVerified": "2026-09-21"
+    },
+    {
+      "id": "childline-116-ke",
+      "name": { "en": "Childline Kenya", "sw": "Simu ya Msaada kwa Watoto Kenya" },
+      "number": "116",
+      "operator": "Childline Kenya, under the Dept. of Children's Services",
+      "notes": "Toll-free, 24/7 helpline for child abuse and protection concerns.",
+      "verified": true,
+      "sourceUrl": "https://childlinekenya.co.ke/",
+      "lastVerified": "2026-09-21"
+    },
+    {
+      "id": "red-cross-ke",
+      "name": { "en": "Kenya Red Cross Emergency", "sw": "Dharura ya Msalaba Mwekundu Kenya" },
+      "number": "1199",
+      "operator": "Kenya Red Cross",
+      "notes": "Reported in a single secondary source; not cross-checked against an official Red Cross page.",
+      "verified": false,
+      "sourceUrl": null,
+      "lastVerified": "2026-09-21"
+    }
+  ],
+  "organizations": [
+    {
+      "id": "hak",
+      "name": "Healthcare Assistance Kenya (HAK)",
+      "servesMale": true,
+      "servesFemale": true,
+      "description": "Runs the 1195 national GBV helpline; survivor referral and case management.",
+      "sourceUrl": "https://hakgbv1195.org/",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    },
+    {
+      "id": "gvrc",
+      "name": "Gender Violence Recovery Centre (GVRC), Nairobi Women's Hospital",
+      "servesMale": false,
+      "servesFemale": true,
+      "description": "Medical, forensic, legal-referral and counselling services for GBV survivors; trains police on forensic GBV response. Explicit male-survivor service scope unconfirmed.",
+      "sourceUrl": "https://gvrc.or.ke/about-us/",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    },
+    {
+      "id": "fida-ke",
+      "name": "FIDA Kenya (Federation of Women Lawyers)",
+      "servesMale": false,
+      "servesFemale": true,
+      "description": "Legal aid for women and GBV survivors. Mandate is women-focused; male-survivor service scope unconfirmed.",
+      "sourceUrl": null,
+      "lastVerified": "2026-09-21",
+      "verified": false
+    },
+    {
+      "id": "creaw",
+      "name": "CREAW (Centre for Rights Education and Awareness)",
+      "servesMale": false,
+      "servesFemale": true,
+      "description": "GBV advocacy, legal aid and survivor support. Male-survivor service scope unconfirmed.",
+      "sourceUrl": null,
+      "lastVerified": "2026-09-21",
+      "verified": false
+    },
+    {
+      "id": "covaw",
+      "name": "COVAW (Coalition on Violence Against Women)",
+      "servesMale": false,
+      "servesFemale": true,
+      "description": "GBV legal aid and protection-order support.",
+      "sourceUrl": "https://covaw.or.ke/",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    }
+  ],
+  "legal": [
+    {
+      "id": "rape-ke",
+      "title": { "en": "Rape — Sexual Offences Act, 2006, Section 3", "sw": "Ubakaji — Sheria ya Makosa ya Kijinsia, 2006, Kifungu 3" },
+      "summary": "Defined as intentional, unlawful penetration of one person's genitalia by another's, without consent, by force, threat or coercion. This definition is gender-neutral and explicitly applies regardless of the sex of the survivor or the assailant — unlike Uganda's Penal Code, which defines rape only as an offence against a woman or girl.",
+      "penalty": "Minimum 10 years, up to life imprisonment depending on circumstances.",
+      "sourceUrl": "https://www.kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/SexualOffencesAct_No3of2006.pdf",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    },
+    {
+      "id": "defilement-ke",
+      "title": { "en": "Defilement — Sexual Offences Act, Section 8", "sw": "Ubakaji wa Mtoto — Sheria ya Makosa ya Kijinsia, Kifungu 8" },
+      "summary": "Sexual intercourse with a child (under 18). Consent is irrelevant. Penalties are tiered by the child's age.",
+      "penalty": "Victim aged 11 or under: mandatory life imprisonment. Aged 12-15: minimum 20 years. Aged 16-17: minimum 15 years.",
+      "sourceUrl": "https://pbi-kenya.org/sites/default/files/A%20SIMPLIFIED%20HANDBOOK%20ON%20THE%20SEXUAL%20OFFENCES%20ACT,%202006%20AND%20OTHER%20RELEVANT%20LAWS%20-%20Reviewed.pdf",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    },
+    {
+      "id": "domestic-violence-ke",
+      "title": { "en": "Protection Against Domestic Violence Act, 2015 (PADVA)", "sw": "Sheria ya Kulinda dhidi ya Ukatili wa Kinyumbani, 2015" },
+      "summary": "Covers domestic violence separately from the Sexual Offences Act, providing for protection, occupation and tenancy orders. Whether it applies equally to male victims was not confirmed against the statute text in the time available.",
+      "penalty": "Protection/occupation orders; criminal penalties for breach.",
+      "sourceUrl": "https://new.kenyalaw.org/akn/ke/act/2015/2/eng@2022-12-31",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    },
+    {
+      "id": "male-survivors-note-ke",
+      "title": { "en": "A note for male survivors of sexual assault", "sw": "Kumbukumbu kwa wanaume walioathirika na unyanyasaji wa kijinsia" },
+      "summary": "Kenya's Sexual Offences Act is written in gender-neutral language, so men and boys have the same explicit legal standing to report rape or sexual assault as women and girls — a meaningful contrast with Uganda, where the equivalent provision applies only to female victims. This does not remove the stigma many male survivors still face in coming forward, which is why Ekyama routes every report to a counsellor first, regardless of country.",
+      "penalty": null,
+      "sourceUrl": "https://pbi-kenya.org/sites/default/files/A%20SIMPLIFIED%20HANDBOOK%20ON%20THE%20SEXUAL%20OFFENCES%20ACT,%202006%20AND%20OTHER%20RELEVANT%20LAWS%20-%20Reviewed.pdf",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    }
+  ]
+}

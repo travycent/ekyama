@@ -1,0 +1,15 @@
+{
+  "name": "Ekyama — Speak safely. Be heard.",
+  "short_name": "Ekyama",
+  "description": "A private, anonymous place to report abuse and get real help, for men and women.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf9fb",
+  "theme_color": "#4c1d95",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

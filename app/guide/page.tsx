@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import { useLang } from "@/lib/LangContext";
+import { useCountry } from "@/lib/CountryContext";
 import { getCountryPack } from "@/lib/countryPack";
 
 interface Match {
@@ -14,8 +15,8 @@ interface Match {
   verified: boolean;
 }
 
-function search(query: string, lang: "en" | "lg" | "sw"): Match[] {
-  const pack = getCountryPack("UG");
+function search(query: string, lang: "en" | "lg" | "sw", country: string): Match[] {
+  const pack = getCountryPack(country);
   const q = query.toLowerCase();
   const terms = q.split(/\s+/).filter((w) => w.length > 2);
   if (terms.length === 0) return [];
@@ -69,11 +70,12 @@ function search(query: string, lang: "en" | "lg" | "sw"): Match[] {
 
 export default function GuidePage() {
   const { t, lang } = useLang();
+  const { country } = useCountry();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Match[] | null>(null);
 
   const runSearch = () => {
-    setResults(search(query, lang));
+    setResults(search(query, lang, country));
   };
 
   return (

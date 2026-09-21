@@ -49,9 +49,14 @@ export default function Home() {
         </div>
 
         <div className="mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-neutral-200 pt-4 text-sm text-neutral-500">
-          <Link href="/lite" className="underline hover:text-neutral-700">
-            {t("cta_lite")}
-          </Link>
+          <div className="flex flex-wrap gap-4">
+            <Link href="/lite" className="underline hover:text-neutral-700">
+              {t("cta_lite")}
+            </Link>
+            <Link href="/ussd-demo" className="underline hover:text-neutral-700">
+              Try it as a feature phone (USSD demo)
+            </Link>
+          </div>
           <Link href="/counsellor" className="underline hover:text-neutral-700">
             Counsellor sign-in
           </Link>

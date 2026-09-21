@@ -35,6 +35,13 @@ After the initial build worked end-to-end, the author asked directly how to make
 
 All three were verified the same way as the first pass: real API/browser tests (a synthetic pitch-shift test to prove the voice-masking fix actually works; headless-browser tests driving the country switcher, the offline service-worker registration, and a full USSD session — including confirming a case submitted through the USSD simulator is a real row the counsellor console can see and reply to), not just a visual check.
 
+## Third pass: transparency and accessibility
+
+The author asked for two final additions, explicitly scoped as the last round before submission:
+
+4. **A public, anonymized transparency/accountability page** (`/stats`, backed by `/api/stats`). It reads straight from the same case database everything else uses, but the API only ever returns counts and a computed median — total reports, breakdowns by status/urgency/country, and the median minutes between a survivor's first message and a counsellor's first reply. Deliberately excluded: case codes, narrative text, district, and any per-case timestamp. Verified by seeding two synthetic cases (one via the report API, one that also got a survivor message and a counsellor reply) and confirming the aggregates — including the median-response calculation — came back correct, then checking the rendered page in a headless browser.
+5. **A "simple view" accessibility toggle**, aimed directly at the brief's requirement for accessibility across literacy levels. A small persisted preference (`lib/SimpleModeContext.tsx`, mirroring the existing language/country context pattern) swaps the home, report and help pages into a large-icon, minimal-text layout: big tappable cards with emoji icons instead of a paragraph of copy, icon buttons instead of radio-button labels on the report form, and direct `tel:` call cards instead of a text-heavy hotline list on the help page. It's additive — the same components, same data, same API calls, just a different rendering path — so it can't drift out of sync with the full-detail views. Verified in a headless browser: toggling it on the home page persists across navigation to `/report` and `/help`, and toggling it back off restores the original layout.
+
 ## Honesty note
 
 This log intentionally states scope cuts and known weaknesses (see README "Known limitations") rather than presenting the demo as more complete than it is — in keeping with the project's own stated approach to trust and accuracy.

@@ -25,6 +25,8 @@ Male survivors of rape, defilement and domestic abuse in Uganda are largely invi
 - A **quick-exit** button (and the Escape key) on every page, which replaces the browser history entry so the back button doesn't return to Ekyama.
 - **English, Luganda and Kiswahili** throughout the main flows, narrowed automatically to whichever languages the selected country pack actually declares.
 - Built **config-driven by country** (`data/countries/*.json`) — Uganda and Kenya both ship fully populated, with a country switcher in the header that changes the help directory, legal notes and available languages everywhere at once (including the low-data and USSD-demo pages). Adding a third country/track is a data file, not a rewrite, which is our answer to the scalability requirement.
+- A public **transparency/accountability page** (`/stats`) — total reports, breakdown by urgency/status/country, and median time to a counsellor's first reply, computed live from real case data. No case codes, narrative text, districts or fine-grained timestamps are ever exposed — only aggregate counts, by design.
+- A **simple view toggle** (the header button) that swaps the home, report and help pages into a large-icon, minimal-reading layout — tap-to-call cards for hotlines, icon buttons instead of radio labels, bigger touch targets — for people with low literacy or low digital confidence. The preference is remembered on that device.
 
 ## Why this, not another GBV app
 
@@ -45,6 +47,8 @@ Open `http://localhost:3000`.
 - **Counsellor console**: `http://localhost:3000/counsellor` — sign in with token `demo-counsellor` (or whatever you set `COUNSELLOR_TOKEN` to).
 - **Low-data mode**: `http://localhost:3000/lite` (try `?country=KE` too)
 - **Feature-phone / USSD demo**: `http://localhost:3000/ussd-demo`
+- **Transparency stats**: `http://localhost:3000/stats`
+- **Simple view**: click the "Detailed view" / "Simple view" toggle in the header to switch the home, report and help pages to a large-icon, low-literacy layout
 
 No API keys or accounts are required. The app uses a local SQLite file (`data/ekyama.db`, created automatically, git-ignored) and stores uploaded audio in `data/uploads/` (also git-ignored). Delete both to reset to a clean demo state.
 

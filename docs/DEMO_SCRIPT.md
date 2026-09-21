@@ -46,7 +46,13 @@ Record with `npm run build && npm run start`, using only the synthetic examples 
 - Mention (or show, if your OS supports it) installing the app to a home screen, and that the help/guide pages keep working with the network turned off, falling back to a static page with the critical hotline numbers if you've never visited before.
 - Tap the red **Quick exit** button (or hit Escape) — show it leaving the page immediately.
 
-## 8. Close (10s)
+## 8. Accountability and accessibility (25s)
+- Click **See our numbers** in the footer, or go to `/stats`.
+- Say: "This is public — total reports, how fast counsellors respond, no case-level data at all. If you're going to ask people to trust a reporting tool, that trust has to be checkable."
+- Go back to the home page and click the **Simple view** toggle in the header.
+- Show the home, report and help pages switch to a large-icon, minimal-text layout — "not everyone using this has the same literacy or digital confidence, so the whole flow works with almost no reading."
+
+## 9. Close (10s)
 - Return to the home page.
 - "Ekyama: speak safely, be heard — for everyone, wherever they are." Fade out.
 

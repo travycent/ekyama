@@ -3,9 +3,70 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import { useLang } from "@/lib/LangContext";
+import { useSimpleMode } from "@/lib/SimpleModeContext";
+
+const SIMPLE_CARDS = [
+  { href: "/report", icon: "📢", key: "cta_report" },
+  { href: "/track", icon: "🔎", key: "cta_track" },
+  { href: "/help", icon: "🤝", key: "cta_help" },
+  { href: "/guide", icon: "❓", key: "cta_guide" },
+] as const;
 
 export default function Home() {
   const { t } = useLang();
+  const { simpleMode } = useSimpleMode();
+
+  if (simpleMode) {
+    return (
+      <div className="flex min-h-screen flex-col">
+        <Header />
+        <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-6 px-4 py-8">
+          <div className="rounded-lg border-2 border-amber-400 bg-amber-50 px-4 py-4 text-center text-base font-semibold text-amber-900">
+            📞 {t("disclaimer_banner")}
+          </div>
+
+          <h1 className="text-center text-4xl font-bold text-violet-900">{t("appName")}</h1>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {SIMPLE_CARDS.map((card) => (
+              <Link
+                key={card.href}
+                href={card.href}
+                className="flex flex-col items-center gap-3 rounded-2xl border-2 border-violet-200 bg-violet-50 p-8 text-center transition hover:border-violet-500 hover:bg-violet-100"
+              >
+                <span className="text-6xl" aria-hidden="true">
+                  {card.icon}
+                </span>
+                <span className="text-2xl font-bold text-violet-900">{t(card.key)}</span>
+              </Link>
+            ))}
+          </div>
+
+          <Link
+            href="/ussd-demo"
+            className="flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-violet-300 bg-white p-6 text-center transition hover:border-violet-500"
+          >
+            <span className="text-4xl" aria-hidden="true">
+              ☎️
+            </span>
+            <span className="text-xl font-bold text-violet-900">Feature phone demo</span>
+          </Link>
+
+          <div className="mt-auto flex flex-wrap items-center justify-center gap-4 border-t border-neutral-200 pt-4 text-base">
+            <Link href="/lite" className="underline hover:text-neutral-700">
+              {t("cta_lite")}
+            </Link>
+            <Link href="/stats" className="underline hover:text-neutral-700">
+              {t("cta_stats")}
+            </Link>
+            <Link href="/counsellor" className="underline hover:text-neutral-700">
+              Counsellor sign-in
+            </Link>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -72,6 +133,9 @@ export default function Home() {
         <div className="mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-neutral-200 pt-4 text-sm text-neutral-500">
           <Link href="/lite" className="underline hover:text-neutral-700">
             {t("cta_lite")}
+          </Link>
+          <Link href="/stats" className="underline hover:text-neutral-700">
+            {t("cta_stats")}
           </Link>
           <Link href="/counsellor" className="underline hover:text-neutral-700">
             Counsellor sign-in

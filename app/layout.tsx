@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { LangProvider } from "@/lib/LangContext";
 import { CountryProvider } from "@/lib/CountryContext";
+import { SimpleModeProvider } from "@/lib/SimpleModeContext";
 import QuickExit from "@/components/QuickExit";
 import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
 
@@ -37,9 +38,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <CountryProvider>
           <LangProvider>
-            <ServiceWorkerRegister />
-            <QuickExit />
-            {children}
+            <SimpleModeProvider>
+              <ServiceWorkerRegister />
+              <QuickExit />
+              {children}
+            </SimpleModeProvider>
           </LangProvider>
         </CountryProvider>
       </body>

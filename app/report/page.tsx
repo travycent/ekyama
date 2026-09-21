@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import { useLang } from "@/lib/LangContext";
 import { useCountry } from "@/lib/CountryContext";
+import { useSimpleMode } from "@/lib/SimpleModeContext";
 import { scrubText } from "@/lib/scrub";
 import { maskAudioBlob } from "@/lib/voiceMask";
 
@@ -13,6 +14,7 @@ type RecordState = "idle" | "recording" | "recorded" | "masking";
 export default function ReportPage() {
   const { t, lang } = useLang();
   const { country } = useCountry();
+  const { simpleMode } = useSimpleMode();
   const router = useRouter();
 
   const [narrative, setNarrative] = useState("");
@@ -107,32 +109,67 @@ export default function ReportPage() {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8">
-        <h1 className="text-2xl font-bold text-violet-900">{t("report_title")}</h1>
-        <p className="mt-2 text-neutral-600">{t("report_intro")}</p>
+        <h1 className={simpleMode ? "text-3xl font-bold text-violet-900" : "text-2xl font-bold text-violet-900"}>
+          {t("report_title")}
+        </h1>
+        <p className={simpleMode ? "mt-2 text-lg text-neutral-700" : "mt-2 text-neutral-600"}>
+          {t("report_intro")}
+        </p>
 
         <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-5">
           <fieldset>
             <legend className="mb-2 text-sm font-medium text-neutral-700">
               {t("report_role_label")}
             </legend>
-            <div className="flex gap-4">
-              <label className="flex items-center gap-2 text-sm">
-                <input
-                  type="radio"
-                  checked={reporterRole === "me"}
-                  onChange={() => setReporterRole("me")}
-                />
-                {t("role_me")}
-              </label>
-              <label className="flex items-center gap-2 text-sm">
-                <input
-                  type="radio"
-                  checked={reporterRole === "someone"}
-                  onChange={() => setReporterRole("someone")}
-                />
-                {t("role_someone")}
-              </label>
-            </div>
+            {simpleMode ? (
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  onClick={() => setReporterRole("me")}
+                  aria-pressed={reporterRole === "me"}
+                  className={`flex flex-col items-center gap-2 rounded-xl border-2 p-5 text-center ${
+                    reporterRole === "me"
+                      ? "border-violet-600 bg-violet-50"
+                      : "border-neutral-200 bg-white"
+                  }`}
+                >
+                  <span className="text-4xl" aria-hidden="true">🙋</span>
+                  <span className="text-lg font-semibold text-neutral-900">{t("role_me")}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setReporterRole("someone")}
+                  aria-pressed={reporterRole === "someone"}
+                  className={`flex flex-col items-center gap-2 rounded-xl border-2 p-5 text-center ${
+                    reporterRole === "someone"
+                      ? "border-violet-600 bg-violet-50"
+                      : "border-neutral-200 bg-white"
+                  }`}
+                >
+                  <span className="text-4xl" aria-hidden="true">🧑‍🤝‍🧑</span>
+                  <span className="text-lg font-semibold text-neutral-900">{t("role_someone")}</span>
+                </button>
+              </div>
+            ) : (
+              <div className="flex gap-4">
+                <label className="flex items-center gap-2 text-sm">
+                  <input
+                    type="radio"
+                    checked={reporterRole === "me"}
+                    onChange={() => setReporterRole("me")}
+                  />
+                  {t("role_me")}
+                </label>
+                <label className="flex items-center gap-2 text-sm">
+                  <input
+                    type="radio"
+                    checked={reporterRole === "someone"}
+                    onChange={() => setReporterRole("someone")}
+                  />
+                  {t("role_someone")}
+                </label>
+              </div>
+            )}
           </fieldset>
 
           <div>
@@ -154,38 +191,51 @@ export default function ReportPage() {
             )}
           </div>
 
-          <div>
-            <label className="mb-1 block text-sm font-medium text-neutral-700">
-              {t("report_district_label")}
-            </label>
-            <input
-              type="text"
-              value={district}
-              onChange={(e) => setDistrict(e.target.value)}
-              className="w-full rounded-md border border-neutral-300 p-2 text-sm focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500"
-            />
-          </div>
+          {!simpleMode && (
+            <div>
+              <label className="mb-1 block text-sm font-medium text-neutral-700">
+                {t("report_district_label")}
+              </label>
+              <input
+                type="text"
+                value={district}
+                onChange={(e) => setDistrict(e.target.value)}
+                className="w-full rounded-md border border-neutral-300 p-2 text-sm focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500"
+              />
+            </div>
+          )}
 
           <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">
-            <p className="mb-2 text-sm font-medium text-neutral-700">{t("report_audio_label")}</p>
+            <p className={simpleMode ? "mb-2 flex items-center gap-2 text-base font-medium text-neutral-700" : "mb-2 text-sm font-medium text-neutral-700"}>
+              {simpleMode && <span aria-hidden="true">🎙️</span>}
+              {t("report_audio_label")}
+            </p>
             <p className="mb-3 text-xs text-neutral-500">{t("voice_masked_note")}</p>
 
             {recordState === "idle" && (
               <button
                 type="button"
                 onClick={startRecording}
-                className="rounded-md bg-violet-700 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-800"
+                className={
+                  simpleMode
+                    ? "w-full rounded-xl bg-violet-700 px-4 py-5 text-lg font-bold text-white hover:bg-violet-800"
+                    : "rounded-md bg-violet-700 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-800"
+                }
               >
-                {t("record_start")}
+                {simpleMode ? `🎙️ ${t("record_start")}` : t("record_start")}
               </button>
             )}
             {recordState === "recording" && (
               <button
                 type="button"
                 onClick={stopRecording}
-                className="animate-pulse rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700"
+                className={
+                  simpleMode
+                    ? "w-full animate-pulse rounded-xl bg-red-600 px-4 py-5 text-lg font-bold text-white hover:bg-red-700"
+                    : "animate-pulse rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700"
+                }
               >
-                {t("record_stop")}
+                {simpleMode ? `⏹️ ${t("record_stop")}` : t("record_stop")}
               </button>
             )}
             {recordState === "masking" && (
@@ -210,7 +260,11 @@ export default function ReportPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="rounded-md bg-violet-800 px-5 py-3 text-base font-semibold text-white hover:bg-violet-900 disabled:opacity-50"
+            className={
+              simpleMode
+                ? "rounded-xl bg-violet-800 px-5 py-5 text-xl font-bold text-white hover:bg-violet-900 disabled:opacity-50"
+                : "rounded-md bg-violet-800 px-5 py-3 text-base font-semibold text-white hover:bg-violet-900 disabled:opacity-50"
+            }
           >
             {submitting ? t("submitting") : t("submit_report")}
           </button>

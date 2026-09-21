@@ -3,6 +3,7 @@
 import Header from "@/components/Header";
 import { useLang } from "@/lib/LangContext";
 import { useCountry } from "@/lib/CountryContext";
+import { useSimpleMode } from "@/lib/SimpleModeContext";
 import { getCountryPack } from "@/lib/countryPack";
 
 function SourceBadge({
@@ -44,7 +45,38 @@ function SourceBadge({
 export default function HelpPage() {
   const { t, lang } = useLang();
   const { country } = useCountry();
+  const { simpleMode } = useSimpleMode();
   const pack = getCountryPack(country);
+
+  if (simpleMode) {
+    return (
+      <div className="flex min-h-screen flex-col">
+        <Header />
+        <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8">
+          <h1 className="text-3xl font-bold text-violet-900">{t("help_title")}</h1>
+          <p className="mt-2 text-lg text-neutral-700">{t("help_intro")}</p>
+
+          <div className="mt-6 flex flex-col gap-4 pb-10">
+            {pack.hotlines.map((h) => (
+              <a
+                key={h.id}
+                href={`tel:${h.number.replace(/\s+/g, "")}`}
+                className="flex items-center gap-4 rounded-2xl border-2 border-violet-200 bg-violet-50 p-5 transition hover:border-violet-500"
+              >
+                <span className="text-5xl" aria-hidden="true">📞</span>
+                <div>
+                  <div className="text-xl font-bold text-violet-900">
+                    {h.name[lang] || h.name.en}
+                  </div>
+                  <div className="font-mono text-2xl text-violet-800">{h.number}</div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen flex-col">

@@ -16,7 +16,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-neutral-50 text-neutral-900">
+      {/* Background/text color come from globals.css (body{}), not Tailwind
+          utilities here — see the note in globals.css for why. */}
+      <body className="min-h-full flex flex-col">
         <LangProvider>
           <QuickExit />
           {children}

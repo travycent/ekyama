@@ -1,6 +1,6 @@
 # AI usage log — Ekyama
 
-Built with Claude (Anthropic), via Claude Code, over roughly 5 hours on 2026-09-21 for the OSF x Andela Hackathon 2026.
+Built with Claude (Anthropic), via Claude Code, on 2026-09-21 for the OSF x Andela Hackathon 2026.
 
 ## What was and wasn't AI-generated
 
@@ -11,12 +11,15 @@ Built with Claude (Anthropic), via Claude Code, over roughly 5 hours on 2026-09-
 
 ## Process, roughly in order
 
-1. Read the hackathon brief; discussed track fit, feasibility, and scope for a ~5 hour build.
+1. Read the hackathon brief; discussed track fit, feasibility, and scope for the build.
 2. Named and scoped the product with the author; flagged risks (voice-masking isn't true anonymity, video was cut from scope, Luganda strings need native-speaker review) rather than overselling the demo.
 3. Delegated a research subagent to find and cite Uganda-specific GBV hotlines, relevant Penal Code / Domestic Violence Act provisions, and organisations — instructed to explicitly mark anything it couldn't verify rather than presenting it as fact. Output was hand-checked before being transcribed into `data/countries/ug.json`.
 4. Scaffolded the Next.js/TypeScript/Tailwind app; built the SQLite schema, case-code/PIN generation, the rules-based triage engine (with an optional, strictly-secondary free-tier AI enhancement path), client-side PII scrubbing, and the Web Audio API voice-masking pipeline.
 5. Built all pages: home, report, case tracker + chat, counsellor console, help directory, grounded Q&A guide, low-data page, and the quick-exit control.
 6. Ran the production build, then smoke-tested the real flow end-to-end via the API (submit a report → verify triage urgency and PII scrubbing → counsellor replies → survivor sees the reply → wrong PIN and wrong counsellor token both correctly rejected) before writing this documentation.
+7. After the author tested the app themselves, they reported two real bugs, which Claude diagnosed and fixed with the author reviewing each fix:
+   - **Voice masking wasn't audible.** The original implementation rendered the recording into an `OfflineAudioContext` at a *different* sample rate to try to shift pitch — but per the Web Audio spec, connecting a buffer to a context at a different rate makes the browser silently resample it back to the same pitch, so the "mask" had no real effect. Fixed by using `AudioBufferSourceNode.playbackRate` instead (rendered at the source's own sample rate), which does genuinely shift pitch — verified with a synthetic 440Hz test tone before and after the fix (see `lib/voiceMask.ts`).
+   - **The page appeared almost black for some visitors.** Tailwind v4 compiles utility classes into a CSS cascade layer; a plain, unlayered `body { background: var(--background); }` rule in `app/globals.css` was silently overriding the `bg-neutral-50` Tailwind class on `<body>`, and a `prefers-color-scheme: dark` block in the same file made that variable resolve to near-black for anyone with a dark OS/browser theme. Fixed by removing the dark-mode override (Ekyama now uses one consistent light theme regardless of the visitor's system setting) and making `globals.css` the single source of truth for the background color, rather than splitting it between CSS and a Tailwind class on the same element.
 
 ## Where AI is used inside the product itself (not just to build it)
 

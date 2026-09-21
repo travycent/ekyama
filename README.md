@@ -63,7 +63,7 @@ Copy `.env.example` to `.env` and set `GROQ_API_KEY` (free tier at [console.groq
 - **Luganda strings were machine-translated** and need a native-speaker review before real use; Kiswahili and English are more reliable.
 - **No SMS/USSD channel yet** — this is a web app (installable as a PWA on a phone home screen), which excludes people on feature phones. That's the single biggest gap versus feature-phone-based tools, and the top roadmap item.
 - **The counsellor console uses a single shared demo token**, not per-counsellor accounts or audit logging — not production-safe as-is.
-- **No real face-blurring or video support** — video upload was deliberately left out of scope for a 5-hour build, since it re-identifies people in a way audio and text don't.
+- **No real face-blurring or video support** — video upload was deliberately left out of scope for this proof of concept, since it re-identifies people in a way audio and text don't.
 - **Legal notes are not legal advice** and should be reviewed by a lawyer before any real deployment.
 - Voice masking (a pitch shift) makes a voice harder to recognise casually; it is **not a guarantee of anonymity** against determined voice analysis, and the app doesn't claim otherwise.
 

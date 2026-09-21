@@ -5,8 +5,8 @@ Built with Claude (Anthropic), via Claude Code, on 2026-09-21 for the OSF x Ande
 ## What the author brought, and what Claude helped with
 
 - **The idea, the target users (male and female survivors), and the core design decisions** (counsellor-first routing before police, no registration, browser-side voice masking, country-pack architecture) came from the author, before involving AI.
-- **Naming**: the author proposed candidate names; Claude checked them against existing products/projects via web search (surfacing that "SafeVoice" and "Sauti Salama" were already in use, including by another entry in the same hackathon) and the author chose "Ekyama" (Luganda) from the remaining options.
-- **Competitive analysis**: at the author's request, Claude reviewed a competing hackathon entry (`swiftkimani/sauti-salama`, a Kenya-focused USSD/SMS/voice GBV line) to identify genuine differentiation before building, rather than duplicating it.
+- **Naming**: the author proposed candidate names; Claude checked them against existing products via web search (surfacing that some candidates were already in use) and the author chose "Ekyama" (Luganda) from the remaining options.
+- **Landscape check**: at the author's request, Claude reviewed an existing public GBV reporting project (Kenya-focused, USSD/SMS/voice) to identify genuine differentiation before building, rather than duplicating it.
 - **Code, data compilation, and documentation** (this file included) were written by Claude, directed and reviewed by the author at each stage.
 
 ## Process, roughly in order

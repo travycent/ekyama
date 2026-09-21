@@ -1,0 +1,50 @@
+# Written summary — Ekyama
+
+## Track
+
+**Safety, Reporting & Protection**, with a light cross-track touch on Transparency & Accountability (the survivor-facing case tracker gives a status trail — received → reviewing → in progress → referred → closed — which is a small accountability mechanism: the survivor can see the report didn't disappear).
+
+## The problem, specifically
+
+Uganda's existing GBV response infrastructure and tools are built almost entirely around women and children as victims. This makes sense given the scale of the problem for women, but it leaves male survivors of rape, defilement and domestic abuse with no obvious entry point. This is compounded by law: Uganda's Penal Code Act defines rape (s.123) as an offence against a woman or girl specifically, so a male survivor cannot report a sexual assault as "rape" under that section. Same-sex sexual assault is often handled under s.145 ("carnal knowledge against the order of nature"), the same section that broadly criminalises same-sex conduct — meaning a male survivor of a same-sex assault risks the same law being turned on him. The practical effect is that many male survivors don't report at all.
+
+Ekyama's core idea — not AI-generated, per the hackathon's rules — is a reporting tool designed from the start to serve men as well as women, that never requires a survivor to disclose who assaulted them before they can access support, and that routes every report to a **human counsellor first**, with any decision about police involvement left to the survivor.
+
+## Users
+
+- A male survivor of domestic abuse or sexual assault, who may not know any service exists for him, and may be afraid of not being believed or of legal exposure.
+- A female survivor of domestic abuse or defilement-related concerns (e.g. reporting on behalf of a child), for whom the existing pathways are somewhat better established but still hard to navigate.
+- A counsellor (in this proof of concept, a stand-in for staff at a partner organisation) who needs to triage incoming reports by urgency and respond without ever seeing the survivor's real identity unless the survivor chooses to share it in the conversation itself.
+
+## Solution, in one paragraph
+
+A mobile-first web app (installable to a home screen, so no app store is required) where a survivor reports in text or a browser-masked voice recording, gets a case code and PIN with no registration, and can track status and chat with a counsellor anonymously. A rules-based triage engine — with an optional, always-secondary free-tier AI enhancement — flags urgency for the counsellor. A verified help directory (hotlines, police units, organisations) and a grounded Q&A guide answer only from sourced, dated data, never invented text. The whole system is built as a country data pack, so Uganda ships fully populated today, and adding another country or track is a data file, not a rewrite.
+
+## Information sources
+
+Compiled by manual research (not AI-generated) on 2026-09-21 from public sources, cited directly in `data/countries/ug.json`:
+
+- Uganda Police Force social channels, for the emergency line (112/999) and the GBV/child-protection toll-free line (0800 199 195) and CFPD direct lines.
+- The Uganda Child Helpline (116), via the National Women's Council and UNICEF's published materials.
+- The Penal Code Act (Cap. 120) provisions on rape (s.123), defilement and aggravated defilement (s.129), via the UN Women EVAW Global Database and an ICMEC compendium of Uganda child-protection legislation.
+- The Domestic Violence Act, 2010, via the Uganda Legal Information Institute (ULII) and the Ministry of Gender, Labour and Social Development.
+- The Human Dignity Trust's Uganda country profile, for the legal-risk note affecting male survivors of same-sex assault.
+- Organisations: Uganda Police CFPU, MGLSD, MIFUMI, FIDA-Uganda, and Men of Hope Refugee Association Uganda (MOHRAU) — one of the few organisations we found that explicitly names male survivors as a served population, via an IDS research publication.
+
+Every entry in the app links back to its source and shows when it was last checked. One organisation (UWONET) is marked as unverified sample data because we could not confirm current direct-service contact details in the time available — we chose to label it rather than drop it or present it as verified.
+
+## Approach to trust and accuracy
+
+1. **No invented facts.** The help directory and the Q&A guide only ever surface pre-verified data from the country pack; the guide explicitly says "I don't have a verified answer" rather than generating one.
+2. **Source + date on everything.** Every hotline, organisation and legal note carries a source URL and a "last verified" date, visible in the UI.
+3. **Unverified is labelled, not hidden or faked.** Anything we couldn't confirm is shown with a visible "sample data" badge.
+4. **AI is kept away from survivor-facing text.** The optional AI triage call only ever produces an internal counsellor brief, never a message a survivor reads, and a rules-based floor runs first and can never be lowered by the AI — so a false "AI says it's fine" can't suppress a real danger signal.
+5. **Synthetic data only.** No real survivor data was used anywhere in building, testing, or demonstrating this project.
+
+## How AI tools were used to build this
+
+See `docs/AI_USAGE.md` for the full log. In summary: the product idea, target users, legal framing and design decisions are the author's own, formed before any AI assistance and stated explicitly to comply with the "don't use AI to generate the capstone idea" rule. Claude (via Claude Code) was used as a coding assistant and research assistant during the build: scaffolding the Next.js app, writing the API routes, the rules-based triage logic, the on-device voice-masking code, the i18n dictionaries, and this documentation, plus a delegated research pass to find and cite the Uganda legal/hotline data above. All AI output was reviewed, tested end-to-end (report → triage → counsellor reply → survivor sees reply, PII scrubbing, wrong-PIN/wrong-token rejection) before being included.
+
+## Potential impact
+
+If piloted with an organisation like MOHRAU or the Uganda Police CFPU as the receiving counsellor team, Ekyama could give male survivors — currently one of the least-served groups in Uganda's GBV response system — a low-friction, low-risk first point of contact, while giving all survivors clearer visibility into what happens after they report. The country-pack architecture is designed so the same shell could serve other African contexts (different legal notes, different hotlines, different languages) without rebuilding the app.

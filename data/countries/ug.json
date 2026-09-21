@@ -1,0 +1,156 @@
+{
+  "code": "UG",
+  "name": "Uganda",
+  "languages": ["en", "lg", "sw"],
+  "hotlines": [
+    {
+      "id": "police-emergency",
+      "name": { "en": "Police Emergency Line", "lg": "Layini ya Poliisi ey'obwangu", "sw": "Simu ya Dharura ya Polisi" },
+      "number": "112 / 999",
+      "operator": "Uganda Police Force",
+      "notes": "National emergency line. Sources differ on which of 112 or 999 is primary; both are in active use.",
+      "verified": true,
+      "sourceUrl": "https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers",
+      "lastVerified": "2026-09-21"
+    },
+    {
+      "id": "gbv-tollfree",
+      "name": { "en": "GBV & Child Protection Toll-Free Line", "lg": "Layini eya Bwereere ey'Obuyambi", "sw": "Simu Bila Malipo ya Ukatili wa Kijinsia" },
+      "number": "0800 199 195",
+      "operator": "Uganda Police, Child & Family Protection Department (CFPD)",
+      "notes": "Toll-free line for reporting gender-based violence and violence against children.",
+      "verified": true,
+      "sourceUrl": "https://x.com/PoliceUg/status/1835625067910230101",
+      "lastVerified": "2026-09-21"
+    },
+    {
+      "id": "cfpd-direct-1",
+      "name": { "en": "CFPD Direct Line", "lg": "Layini eya CFPD", "sw": "Simu ya Moja kwa Moja ya CFPD" },
+      "number": "+256 707 772 691",
+      "operator": "Uganda Police, Child & Family Protection Department",
+      "notes": "Backup direct line for the same department.",
+      "verified": true,
+      "sourceUrl": "https://x.com/PoliceUg/status/1835625067910230101",
+      "lastVerified": "2026-09-21"
+    },
+    {
+      "id": "child-helpline-116",
+      "name": { "en": "Uganda Child Helpline", "lg": "Layini ey'Obuyambi ku Baana", "sw": "Simu ya Msaada kwa Watoto Uganda" },
+      "number": "116",
+      "operator": "National Women's Council / MGLSD, supported by UNICEF",
+      "notes": "Free national helpline; covers child abuse and defilement of minors.",
+      "verified": true,
+      "sourceUrl": "https://nwc.go.ug/uganda-child-helpline-116/",
+      "lastVerified": "2026-09-21"
+    }
+  ],
+  "organizations": [
+    {
+      "id": "cfpu",
+      "name": "Uganda Police Force — Child & Family Protection Unit (CFPU)",
+      "servesMale": true,
+      "servesFemale": true,
+      "description": "National police unit that investigates GBV, defilement and domestic-violence cases. Serves survivors of any gender.",
+      "sourceUrl": "https://x.com/PoliceUg/status/1835625067910230101",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    },
+    {
+      "id": "mglsd",
+      "name": "Ministry of Gender, Labour and Social Development (MGLSD)",
+      "servesMale": true,
+      "servesFemale": true,
+      "description": "National policy body coordinating GBV and domestic-violence response, and custodian of the Domestic Violence Act.",
+      "sourceUrl": "https://mglsd.go.ug/",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    },
+    {
+      "id": "mohrau",
+      "name": "Men of Hope Refugee Association Uganda (MOHRAU)",
+      "servesMale": true,
+      "servesFemale": false,
+      "description": "Kampala-based organisation explicitly serving male survivors of sexual violence, particularly among refugee communities. Offers peer support and advocacy.",
+      "sourceUrl": "https://www.ids.ac.uk/publications/therapeutic-activism-men-of-hope-refugee-association-uganda-breaking-the-silence-over-male-rape-in-conflict-related-sexual-violence/",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    },
+    {
+      "id": "mifumi",
+      "name": "MIFUMI",
+      "servesMale": false,
+      "servesFemale": true,
+      "description": "NGO based in Eastern Uganda working on domestic violence and GBV prevention and survivor support. Historically focused on women and girls.",
+      "sourceUrl": "https://mifumi.org/domestic-violence/",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    },
+    {
+      "id": "fida",
+      "name": "FIDA-Uganda (Association of Women Lawyers)",
+      "servesMale": false,
+      "servesFemale": true,
+      "description": "Provides legal aid to GBV and domestic-violence survivors and public education on reporting. Mandate is women-focused.",
+      "sourceUrl": "https://fidauganda.org/theres-help-for-victims-of-domestic-violence/",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    },
+    {
+      "id": "uwonet",
+      "name": "Uganda Women's Network (UWONET)",
+      "servesMale": false,
+      "servesFemale": true,
+      "description": "National coalition doing GBV policy advocacy rather than direct service. Contact details for individual referrals are unverified.",
+      "sourceUrl": null,
+      "lastVerified": "2026-09-21",
+      "verified": false
+    }
+  ],
+  "legal": [
+    {
+      "id": "rape",
+      "title": { "en": "Rape — Penal Code Act, Section 123", "lg": "Okukwatako mu maanyi — Ekitundu 123", "sw": "Ubakaji — Kifungu 123" },
+      "summary": "Defined as unlawful carnal knowledge of a woman or girl without consent (including consent obtained by force, threat, or false representation). This definition is gender-specific to female victims.",
+      "penalty": "Felony; sentencing varies by circumstance, up to death penalty in aggravated cases as defined by the courts.",
+      "sourceUrl": "https://evaw-global-database.unwomen.org/fr/countries/africa/uganda/2007/article-123-of-the-penal-code-act-chapter-120-punishment-for-rape",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    },
+    {
+      "id": "defilement",
+      "title": { "en": "Defilement — Penal Code Act, Section 129(1)", "lg": "Okwonoona omwana — Ekitundu 129(1)", "sw": "Ubakaji wa Mtoto — Kifungu 129(1)" },
+      "summary": "A sexual act with a person under 18 years of age. Attempted defilement is a separate, lesser offence.",
+      "penalty": "Defilement: life imprisonment. Attempted defilement: up to 18 years.",
+      "sourceUrl": "https://www.icmec.org/wp-content/uploads/2018/10/ICMEC-Uganda-National-Legislation.pdf",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    },
+    {
+      "id": "aggravated-defilement",
+      "title": { "en": "Aggravated Defilement — Section 129(3)-(5)", "lg": "Okwonoona okw'amaanyi — Ekitundu 129(3)-(5)", "sw": "Ubakaji Mkubwa wa Mtoto — Kifungu 129(3)-(5)" },
+      "summary": "Applies when the victim is under 14, the offender is HIV-positive, the offender is a parent, guardian or person in authority, the victim has a disability, or the offender is a repeat offender.",
+      "penalty": "Death sentence on conviction by the High Court; attempt carries life imprisonment.",
+      "sourceUrl": "https://www.icmec.org/wp-content/uploads/2018/10/ICMEC-Uganda-National-Legislation.pdf",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    },
+    {
+      "id": "domestic-violence",
+      "title": { "en": "Domestic Violence Act, 2010", "lg": "Etteeka ery'Obukambwe mu Maka, 2010", "sw": "Sheria ya Ukatili wa Kinyumbani, 2010" },
+      "summary": "A separate statute from the Penal Code covering physical, sexual, economic and emotional/psychological abuse between spouses or family members. It is gender-neutral and applies regardless of which partner is the survivor. Provides for protection orders.",
+      "penalty": "Varies; includes protection orders and criminal penalties for breach.",
+      "sourceUrl": "https://ulii.org/akn/ug/act/2010/3/eng@2010-04-09/source",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    },
+    {
+      "id": "male-survivors-note",
+      "title": { "en": "A note for male survivors of sexual assault", "lg": "Obubaka eri abasajja abaliko obulumi", "sw": "Kumbukumbu kwa wanaume walioathirika" },
+      "summary": "Because Section 123 (rape) applies only to female victims, a male survivor of sexual assault is generally not able to report it as 'rape' under that section. Male-on-female indecent assault falls under separate indecent-assault provisions. Same-sex sexual assault is often handled under Section 145 ('carnal knowledge against the order of nature'), which also broadly criminalises same-sex conduct — meaning a male survivor reporting a same-sex assault may risk that same statute being used against him. This is why Ekyama routes every report to a counsellor first, before any decision about police involvement is made, and never requires disclosure of an assailant's sex to access support.",
+      "penalty": null,
+      "sourceUrl": "https://www.humandignitytrust.org/country-profile/uganda/",
+      "lastVerified": "2026-09-21",
+      "verified": true
+    }
+  ]
+}

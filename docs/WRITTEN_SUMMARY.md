@@ -8,7 +8,7 @@
 
 Uganda's existing GBV response infrastructure and tools are built almost entirely around women and children as victims. This makes sense given the scale of the problem for women, but it leaves male survivors of rape, defilement and domestic abuse with no obvious entry point. This is compounded by law: Uganda's Penal Code Act defines rape (s.123) as an offence against a woman or girl specifically, so a male survivor cannot report a sexual assault as "rape" under that section. Same-sex sexual assault is often handled under s.145 ("carnal knowledge against the order of nature"), the same section that broadly criminalises same-sex conduct — meaning a male survivor of a same-sex assault risks the same law being turned on him. The practical effect is that many male survivors don't report at all.
 
-Ekyama's core idea — not AI-generated, per the hackathon's rules — is a reporting tool designed from the start to serve men as well as women, that never requires a survivor to disclose who assaulted them before they can access support, and that routes every report to a **human counsellor first**, with any decision about police involvement left to the survivor.
+Ekyama's core idea is a reporting tool designed from the start to serve men as well as women, that never requires a survivor to disclose who assaulted them before they can access support, and that routes every report to a **human counsellor first**, with any decision about police involvement left to the survivor.
 
 ## Users
 
@@ -22,7 +22,7 @@ A mobile-first web app (installable to a home screen, works offline for the page
 
 ## Information sources
 
-Compiled by manual research (not AI-generated) on 2026-09-21 from public sources, cited directly in `data/countries/ug.json` and `data/countries/ke.json`:
+Compiled by research on 2026-09-21 from public sources, cited directly in `data/countries/ug.json` and `data/countries/ke.json`:
 
 **Uganda:**
 - Uganda Police Force social channels, for the emergency line (112/999) and the GBV/child-protection toll-free line (0800 199 195) and CFPD direct lines.

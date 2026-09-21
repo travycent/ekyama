@@ -92,6 +92,10 @@
   table.compare th { background: #6d28d9; color: white; }
   table.compare td.yes { color: #15803d; font-weight: 700; }
   table.compare td.no { color: #b91c1c; }
+  .shots { display: flex; gap: 28px; align-items: flex-start; margin-top: 20px; }
+  .shot-col { flex: 1; }
+  .shot-col img { width: 100%; border-radius: 10px; border: 1px solid #e9d5ff; box-shadow: 0 8px 24px rgba(109,40,217,0.12); display: block; }
+  .shot-col .cap { margin-top: 10px; font-size: 17px; font-weight: 700; color: #4c1d95; }
 </style>
 </head>
 <body>
@@ -169,6 +173,28 @@
   <div class="footer-brand">EKYAMA</div>
 </section>
 
+<!-- 4.5: Product screenshots -->
+<section class="slide">
+  <div class="accent"></div>
+  <div class="kicker">What it looks like</div>
+  <h2>Not a mockup — the real, working app</h2>
+  <div class="shots">
+    <div class="shot-col">
+      <img src="img/report.png" alt="Ekyama report form" />
+      <div class="cap">Reporting — text, PII auto-scrubbed live</div>
+    </div>
+    <div class="shot-col">
+      <img src="img/counsellor.png" alt="Ekyama counsellor console" />
+      <div class="cap">Counsellor console — sorted by urgency</div>
+    </div>
+    <div class="shot-col">
+      <img src="img/stats.png" alt="Ekyama public stats page" />
+      <div class="cap">Public transparency stats</div>
+    </div>
+  </div>
+  <div class="footer-brand">EKYAMA</div>
+</section>
+
 <!-- 5: Trust and safety features -->
 <section class="slide">
   <div class="accent"></div>
@@ -198,6 +224,20 @@
       <div class="card"><h3>Optional free-tier AI</h3><p>Sharpens the counsellor's brief. Fails silently back to rules if unavailable — the demo can't break on this path.</p></div>
     </div>
   </div>
+  <div class="footer-brand">EKYAMA</div>
+</section>
+
+<!-- 6.5: AI used to build this -->
+<section class="slide">
+  <div class="accent"></div>
+  <div class="kicker">AI Coding Usage</div>
+  <h2>How AI was used to build Ekyama</h2>
+  <ul class="big">
+    <li>The problem, the target users, and the core design decisions (counsellor-first routing, no registration, on-device voice masking, country-pack architecture) came from the author first, then were built out with Claude as a coding and research assistant.</li>
+    <li>Claude scaffolded the Next.js app, wrote the API routes, the rules-based triage engine, the PII-scrubbing and voice-masking code, the i18n dictionaries, and the country-pack data — with a research pass to find and cite the Uganda and Kenya legal/hotline sources.</li>
+    <li>Every AI-written piece was tested end-to-end before being kept: submit → triage → counsellor reply → survivor sees reply, PII scrubbing, wrong-PIN/wrong-token rejection, a synthetic pitch-shift test for the voice masking, and headless-browser checks for the country switcher, offline mode and the USSD flow.</li>
+    <li>When the author found two real bugs after testing (voice masking not audible, a dark-mode styling bug), Claude diagnosed and fixed both with the author reviewing each change — documented in full in <code>docs/AI_USAGE.md</code>.</li>
+  </ul>
   <div class="footer-brand">EKYAMA</div>
 </section>
 

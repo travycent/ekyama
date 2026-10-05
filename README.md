@@ -65,8 +65,19 @@ Copy `.env.example` to `.env` and set `GROQ_API_KEY` (free tier at [console.groq
 - **Trust is explicit.** Every directory and legal entry carries a source link and a last-verified date; unverified entries are labelled, not silently included.
 - **Synthetic data only.** No real survivor data was used in building or testing this. The Uganda and Kenya data packs (`data/countries/ug.json`, `data/countries/ke.json`) were compiled from public sources — see the URLs in each file — verified on 2026-09-21.
 
+## Deploying to Vercel (demo only)
+
+Ekyama deploys to Vercel with no extra setup — `better-sqlite3` is on Next.js's built-in server-external-package list, and `next.config.ts` forces its native binary into the serverless function bundle.
+
+1. Push this repo to GitHub.
+2. In Vercel: **New Project** → import the repo → deploy (no environment variables are required; see "Optional: enable AI-enhanced triage" above if you want one).
+3. That's it. The deployed app is fully functional for a demo/walkthrough.
+
+**Important caveat**: this makes it a demo deployment, not a production one. Vercel's serverless functions have a read-only filesystem except `/tmp`, and `/tmp` is wiped whenever the function gets a fresh instance (a redeploy, a cold start after idle, routine instance recycling). `lib/db.ts` detects `process.env.VERCEL` and points the SQLite file and audio uploads at `/tmp` automatically, so the app works end-to-end — submit a report, see it in the counsellor console, chat back and forth — but that data can silently reset at any time. For a real deployment, swap the SQLite file for a hosted database (e.g. [Turso](https://turso.tech), which is libSQL/SQLite-compatible with a free tier and needs only a connection-string change in `lib/db.ts`) and swap local audio storage for a hosted blob store (e.g. Vercel Blob).
+
 ## Known limitations (honest roadmap)
 
+- **The Vercel deployment's data is ephemeral** (see above) — don't rely on it between sessions; it's for demoing the flow, not storing real cases.
 - **Luganda strings were machine-translated** and need a native-speaker review before real use; Kiswahili and English are more reliable.
 - **The USSD channel is a local simulator, not a live telco connection.** `/ussd-demo` genuinely calls the real report/case APIs, proving the architecture works channel-agnostically, but wiring it to a real short code needs a telco gateway account (e.g. Africa's Talking), approval, and a permanent server — none of which are realistic to stand up for a hackathon submission. That integration is the top roadmap item.
 - **The counsellor console uses a single shared demo token**, not per-counsellor accounts or audit logging — not production-safe as-is.

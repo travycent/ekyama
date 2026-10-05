@@ -2,7 +2,17 @@ import Database from "better-sqlite3";
 import path from "path";
 import fs from "fs";
 
-const dataDir = path.join(process.cwd(), "data");
+// On Vercel (and other read-only-filesystem serverless hosts), the project
+// directory isn't writable — only /tmp is, and it's wiped whenever the
+// serverless function gets a fresh instance (a redeploy, a cold start after
+// idle, or just routine instance recycling). That makes this a genuine
+// demo deployment: data submitted stays visible while the same warm
+// instance keeps serving requests, but can reset without warning. A real
+// deployment needs a hosted database (e.g. Turso/libSQL) and blob storage
+// for audio instead — see README "Known limitations".
+const dataDir = process.env.VERCEL
+  ? path.join("/tmp", "ekyama-data")
+  : path.join(process.cwd(), "data");
 if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
 
 const uploadsDir = path.join(dataDir, "uploads");
@@ -10,13 +20,15 @@ if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
 
 const dbPath = path.join(dataDir, "ekyama.db");
 
-// Reuse a single connection across hot reloads in dev.
+// Reuse a single connection for the lifetime of this process — across dev
+// hot reloads, and across requests served by the same warm serverless
+// instance.
 declare global {
   var __ekyamaDb: Database.Database | undefined;
 }
 
 export const db: Database.Database = global.__ekyamaDb ?? new Database(dbPath);
-if (process.env.NODE_ENV !== "production") global.__ekyamaDb = db;
+global.__ekyamaDb = db;
 
 db.pragma("journal_mode = WAL");
 

@@ -10,10 +10,26 @@ import fs from "fs";
 // instance keeps serving requests, but can reset without warning. A real
 // deployment needs a hosted database (e.g. Turso/libSQL) and blob storage
 // for audio instead — see README "Known limitations".
-const dataDir = process.env.VERCEL
-  ? path.join("/tmp", "ekyama-data")
-  : path.join(process.cwd(), "data");
-if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+//
+// We don't rely on a host-specific env var (e.g. process.env.VERCEL) to
+// detect this, since whether that's set can depend on project settings
+// that vary per deployment. Instead we just try the normal project-local
+// path first and fall back to /tmp if it isn't writable — this works on
+// Vercel, any other read-only-filesystem host, and plain local dev alike.
+function resolveDataDir(): string {
+  const preferred = path.join(process.cwd(), "data");
+  try {
+    fs.mkdirSync(preferred, { recursive: true });
+    fs.accessSync(preferred, fs.constants.W_OK);
+    return preferred;
+  } catch {
+    const fallback = path.join("/tmp", "ekyama-data");
+    fs.mkdirSync(fallback, { recursive: true });
+    return fallback;
+  }
+}
+
+const dataDir = resolveDataDir();
 
 const uploadsDir = path.join(dataDir, "uploads");
 if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
